@@ -1,0 +1,144 @@
+<div class="banner">
+  <div class="banner-content">Find Your Dream Retreat<br></div>
+  <div class="description"> Explore vacation homes, and more...</div>
+</div>
+<!-- trip-search.component.html -->
+<div class="development-prompt">
+  <p><b>we are using external API to retrieve flights so it uses 3 CHAR codes for location.Please select LON as departure location PAR as arrival location for acurate results.other inputs can be given as required</b></p>
+</div>
+<div class="trip-container ">
+  <div class="head"><h2>Select Your Trip Type</h2></div>
+<div class="trip-type-container">
+  <div class="trip-type-card" [ngClass]="{'selected': tripType === 'one-way'}" routerLink="/flights" routerLinkActive="active-link" (click)="toggleTripType('one-way');reloadPage()">
+    <h3>One-Way</h3>
+  </div>
+  <div class="trip-type-card" [ngClass]="{'selected': tripType === 'round-trip'}" (click)="toggleTripType('round-trip')">
+    <h3>Round-Trip</h3>
+  </div>
+</div>
+
+<div class="options-container">
+  <div *ngIf="tripType === 'one-way'" class="option-card">
+    <form (ngSubmit)="searchFlightsoneway()" #flightSearchForm="ngForm">
+      <div class="form-group-loc">
+        <div class="input-group">
+          <label for="departure-airport">Departure Airport:</label>
+          <input type="text" id="departure-airport" [(ngModel)]="departureAirport" (input)="searchAirports($event, 'departure')" name="departureAirport">
+          <select [class.open]="departureDropdownOpen">
+            <option *ngFor="let result of departureSearchResult">
+              {{result.detailedName}} International Airport
+            </option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="arrival-airport">Arrival Airport:</label>
+          <input type="text" id="arrival-airport" [(ngModel)]="arrivalAirport" (input)="searchAirports($event, 'arrival')" name="arrivalAirport">
+          <select class="select" [class.open]="arrivalDropdownOpen">
+            <option *ngFor="let result of arrivalSearchResult">
+              {{result.detailedName}} International Airport
+            </option>
+          </select>
+        </div> 
+      </div>
+      <div class="form-group-data">
+        <div class="input-group">
+          <label for="departure-date">Departure Date:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <input type="date" id="departure-date" [(ngModel)]="departureDate" name="departureDate" required>
+        </div>
+        <div class="input-group">
+          <label for="passengers">Passengers:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <input type="number" id="passengers" [(ngModel)]="passengers" name="passengers" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="submit-button" [disabled]="!flightSearchForm.valid">Search Flights</button>
+      </div>
+    </form> 
+  </div> 
+  </div>
+
+  <div *ngIf="tripType === 'round-trip'" class="option-card">
+    <form (ngSubmit)="searchFlights()" #flightSearchForm="ngForm">
+      <div class="form-group-loc">
+        <div class="input-group">
+          <label for="departure-airport">Departure Airport:</label>
+          <input type="text" id="departure-airport" [(ngModel)]="departureAirport" (input)="searchAirports($event, 'departure')" name="departureAirport">
+          <select [class.open]="departureDropdownOpen">
+            <option *ngFor="let result of departureSearchResult">
+              {{result.detailedName}} International Airport
+            </option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="arrival-airport">Arrival Airport:</label>
+          <input type="text" id="arrival-airport" [(ngModel)]="arrivalAirport" (input)="searchAirports($event, 'arrival')" name="arrivalAirport">
+          <select class="select" [class.open]="arrivalDropdownOpen">
+            <option *ngFor="let result of arrivalSearchResult">
+              {{result.detailedName}} International Airport
+            </option>
+          </select>
+        </div> 
+      </div>
+      <div class="form-group-data">
+        <div class="input-group">
+          <label for="departure-date">Departure Date:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <input type="date" id="departure-date" [(ngModel)]="departureDate" name="departureDate" required>
+        </div>
+        <div class="input-group">
+          <label for="return-date">Return Date:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <input type="date" id="return-date" [(ngModel)]="returnDate" name="returnDate" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <label for="passengers">Passengers:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <input type="number" id="passengers" [(ngModel)]="passengers" name="passengers" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="submit-button" [disabled]="!flightSearchForm.valid">Search Flights</button>
+      </div>
+    </form>    
+  </div>  
+</div>
+
+<!-- flights.component.html -->
+<div class="flight-container">
+  <div *ngIf="searchResults && searchResults.length > 0 && departureSearchResult.length >0 && arrivalSearchResult;">
+    <h1 class="heading"><b>Flight Search Results</b></h1>
+    <div class="card-container">
+      <div class="ticket" *ngFor="let flight of searchResults.slice(0, 4); let i = index">
+        <div class="card-header card">
+          <h2>{{ flight.airline }}</h2>
+        </div>
+       <div class="Details-card card">
+        <div class="main-data">
+          <p class="main-data-item" style="font-weight: bold; font-size: 18px;">From</p>
+          <p class="main-data-item" style="font-weight: bold;">{{departureSearchResult[i].detailedName}}</p>
+          <p class="main-data-item">{{this.starttime}}</p>
+        </div>
+        <div>----></div>
+        <div class="main-data" style="margin-inline: 0.5cm;">
+          <p class="main-data-item" style="font-weight: bold; font-size: 18px;">To</p>
+          <p class="main-data-item" style="font-weight: bold;" >{{arrivalSearchResult[i].detailedName}}</p>
+          <p class="main-data-item">{{generateRandomEndTime(this.endtime)}}</p>
+        </div>
+
+       </div>
+        <div class="card-footer card">
+          <div class="price"><p style="font-size: 24px;font-weight: bold;"> {{ flight.travelerPricings[0].price.total }}$</p><span>per person</span><br></div>
+          <button mat-button class="details-button" (click)="toggleDetails(flight,this.departureSearchResult[i].detailedName,this.starttime,this.arrivalSearchResult[i].detailedName,this.endtime)">Show Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

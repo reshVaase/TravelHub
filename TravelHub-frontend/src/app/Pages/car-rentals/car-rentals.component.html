@@ -1,0 +1,43 @@
+<div class="banner">
+    <div class="banner-content"><b>Find Your Dream Retreat</b><br></div>
+    <div class="description"> Explore vacation homes, and more...</div>
+</div>
+<div class="development-prompt">
+  <p><b>Please select dallas as location ,rentalstart date as May 14th 2024,rentalendDate as may 18th 2024 for acurate results</b></p>
+</div>
+<div class="search-card">
+    <div class="head">Search cars for rental</div>
+    <form (ngSubmit)="searchCars()">
+      <div class="form">
+        <div class="input-field">
+          <input [(ngModel)]="pickupLocation" placeholder ="location" name="departureStation" required>
+        </div>
+        <div class="input-field">
+            <input type="date" [(ngModel)]="rentalstartDate" placeholder =" rental start date " name="departureDate" required>
+        </div>
+        <div class="input-field">
+          <input type="date" [(ngModel)]="rentalendDate" placeholder =" rental end date" name="departureDate" required>
+        </div>
+        <button type="submit">Search </button>
+      </div>
+    </form>
+</div>
+<div class="row" style="margin-inline: 2cm; margin-block: 1cm;">
+  <div *ngFor="let car of cars " class="car card">
+      <div class="model card">
+        <div class="name" style="font-size: 24px;"><b>{{car.carModel}}</b></div>
+        <span>2017</span>
+      </div>
+      <div class="picture card">
+        <div class="name"><img src={{car.carImageUrl}} alt="car image"></div>
+      </div>
+      <div class="price" style="height: 2.8cm;padding-inline: 0.3cm;">
+        <span>Explore our fleet: from compact sedans to spacious SUVs</span>
+        <div class="pricetag">
+          <div class="ammout"><b>{{car.totalPrice}}$</b><br><span>per day</span></div>
+          <div class="check"><button type="submit" (click)="confirm(car)" >learn more</button></div>
+        </div>
+      </div>
+  </div>
+</div>
+

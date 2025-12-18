@@ -1,0 +1,37 @@
+<div class="wrapper">
+    <div class="title">
+       Login
+    </div>
+    <form #loginform="ngForm" (ngSubmit)="loginUser()">
+       <div class="field">
+         <input type="text" name="email" [(ngModel)] ="user.email" required #email="ngModel" [class.is-invalid]="email.invalid&&email.touched">
+         <label>Email Address</label>
+         <div *ngIf="email.errors && (email.invalid && email.touched)">
+            <small class="text-danger" *ngIf="email.errors?.['required']">Email id is required</small>
+         </div> 
+       </div>
+       <div class="field">
+         <input type="password" name="password" [(ngModel)] ="user.password" required #password="ngModel" [class.is-invalid]="password.invalid && password.touched">
+         <label>Password</label>
+         <div *ngIf="password.errors && (password.invalid && password.touched)">
+            <small class="text-danger" *ngIf="password.errors?.['required']">password id is required</small>
+         </div> 
+       </div>
+       <div class="content">
+          <div class="checkbox">
+             <input type="checkbox" id="remember-me">
+             <label for="remember-me">Remember me</label>
+          </div>
+          <div class="pass-link">
+             <a href="#">Forgot password?</a>
+          </div>
+       </div>
+       <div class="field">
+          <input type="submit"  value=login>
+       </div>
+       <div class="signup-link">
+          Not a member? <a  routerLink="/signup" routerLinkActive="active-link">Register</a>
+       </div>
+    </form>
+ </div>
+

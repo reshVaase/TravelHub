@@ -1,0 +1,208 @@
+.banner {
+    background-image: url("..\\..\\\../assets/img/286780497.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300px;
+}
+.development-prompt{
+  color: black;
+  background-color:rgb(180, 255, 5);
+  font-size: bold;
+  margin-top: 2cm;
+  font-size: 18px;
+  margin-bottom: 0;
+  margin-inline: 4cm;
+}
+.banner-content {
+    font-size: 50px;
+    color: white;
+    padding-top: 3cm;
+    padding-inline: 2cm; 
+}
+
+.description {
+    font-size: 30px;
+    color: white;
+    padding-left: 2cm;
+    padding-top: 30px;
+}
+
+.search-card {
+  margin-left: 2cm;
+  margin-right: 2cm;
+  padding: 1cm;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.head {
+  margin-bottom: 0.5cm;
+  font-size:24px;
+  font-weight: bolder;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+}
+
+input {
+  padding: 0.5cm;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  height: 1.5cm;
+}
+
+#city {
+  width: 7cm; /* Set city input width */
+}
+#date{
+  width: 7cm;
+}
+
+#radius {
+  width: 5cm; /* Set radius input width */
+}
+
+.search{ /* Adjust button dimensions */
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  background-color: lightseagreen; /* Adjust button color */
+  height: 1.5cm;
+  padding-inline:2.3cm;
+}
+
+
+
+
+.holder {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: row;
+  width: 25.5cm;
+  height: 7cm;
+  margin-block: 0.3cm;
+  margin-inline: 2cm;
+}
+
+
+
+.image-container {
+  width: 40%; /* Set the width of the image container */
+}
+
+.image-container img {
+  width: 100%; /* Make the image fill its container */
+  height: 100%; /* Make the image fill its container */
+  object-fit: cover; /* Ensure the image covers the container */
+  border-top-left-radius: 5px; /* Add border radius to top left corner of image */
+  border-bottom-left-radius: 5px; /* Add border radius to bottom left corner of image */
+}
+.details{
+    width: 10cm;
+    padding-inline-start: 1cm;
+}
+.head{
+   margin-top: 0.5cm;
+}
+.head :hover{
+  cursor: pointer;
+  color: lightseagreen;
+}
+.tick-mark::before {
+  content: "\2713"; /* Unicode character for a tick mark */
+  margin-right: 5px; /* Add some space between the tick mark and the text */
+  color: lightseagreen; 
+  margin-block: 0.5cm;/* Color of the tick mark */
+}
+.location { /* Unicode character for a tick mark */
+  margin-right: 5px; /* Add some space between the tick mark and the text */
+  margin-block: 0.2cm;/* Color of the tick mark */
+}
+.rating{
+  margin-bottom: 0.5cm;
+  display: flex;
+  flex-direction: row;
+  margin-top: 1cm;
+}
+.price{
+  width: 5.3cm;
+  align-items: center;
+}
+.price h1{
+  margin-top: 2cm;
+}
+.check button{
+  width: 3cm;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  background-color: lightseagreen; /* Adjust button color */
+  height: 1.3cm;
+}
+
+
+
+
+
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  margin-inline: 3cm;
+  .card {
+    display: inline-block;
+  }
+}
+
+.rest-card {
+  width: 7cm; /* Adjust card width as needed */
+  height: 9cm;
+  margin-inline: 5px;
+}
+
+
+.restimage img{
+  width: 100%; /* Ensure full width */
+  height: 5cm; /* Ensure full height */
+  background-size: cover; 
+  background-position: center; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Add box shadow */
+}
+
+.rest-name{
+  margin-inline: 0.4cm;
+}
+
+.address{
+  margin-inline: 0.4cm;
+}
+
+.rate{
+  display: flex;
+  flex-direction: row;
+  margin-inline:0.4cm ;
+}
+.rate button{
+  width: 3cm;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  background-color: lightseagreen; /* Adjust button color */
+  height: 1cm;
+}  
+
+.rate h6{
+  width: 1cm;
+  font-size: 24px;
+}

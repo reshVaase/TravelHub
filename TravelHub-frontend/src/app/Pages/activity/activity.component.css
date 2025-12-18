@@ -1,0 +1,40 @@
+.user-bookings {
+    margin-inline: 5cm;
+    margin-block: 1cm;
+}
+
+.user-bookings h3 {
+    color: #333;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+
+.card-header{
+    height: 2cm;
+    padding: 0.5cm;
+    margin-bottom: 0.5cm;
+}
+
+.no{
+    text-align: center;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+h2 {
+    color: #333;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    margin-bottom: 10px;
+}
+label {
+    font-weight: bold;
+}

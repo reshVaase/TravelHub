@@ -1,0 +1,9 @@
+version: '3.5'
+
+services:
+  angular-service:
+    container_name: angular-container2
+    image: travelhub.azurecr.io/angular-service:latest  # Update with your ACR name
+    ports:
+      - "4200:80"
+    command: bash -c "npm start"
